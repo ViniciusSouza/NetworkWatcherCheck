@@ -14,7 +14,7 @@ const (
 )
 
 var (
-	networkProvider = mockup.NewNetworkWathcerMockup(callback)
+	networkProvider = mockup.NewNetworkWatcherProvider(callback)
 )
 
 func TestUN_CheckVMConnection(t *testing.T) {
