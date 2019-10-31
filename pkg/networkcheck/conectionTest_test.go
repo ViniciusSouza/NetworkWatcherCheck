@@ -1,4 +1,4 @@
-package networkworkcheck
+package networkcheck
 
 import (
 	"NetworkWatcherCheck/pkg/mockup"
