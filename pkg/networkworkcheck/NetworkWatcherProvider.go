@@ -37,6 +37,9 @@ const (
 	contentAppJSON            = "application/json"
 	netWatcherNumberOfRetries = 20
 	netWatcherSleep           = 5
+	jobIDLength               = 36
+	retryableErrorType        = "RetryableError"
+	retryableErrorMessage     = "Operation ConnectivityOperation (" //Used to retrieve the JodID from the message body
 
 	queueJobRequestID = "X-Ms-Request-Id"
 	missingHeader     = "Missing header %s"
@@ -135,7 +138,7 @@ func (net *networkWatcherProvider) QueueConnectionTestJob() error {
 
 func isRetryableError(strError string) bool {
 
-	if strings.Contains(strError, "RetryableError") {
+	if strings.Contains(strError, retryableErrorType) {
 		return true
 	}
 	return false
@@ -145,10 +148,10 @@ func isRetryableError(strError string) bool {
 func getJobIDFromRetryableError(strError string) string {
 	retryableJob := ""
 	if isRetryableError(strError) {
-		idx := strings.Index(strError, "Operation ConnectivityOperation (")
+		idx := strings.Index(strError, retryableErrorMessage)
 		if idx > -1 {
-			init := idx + len("Operation ConnectivityOperation (")
-			final := init + 36
+			init := idx + len(retryableErrorMessage)
+			final := init + jobIDLength
 			retryableJob = strError[init:final]
 		}
 	}
