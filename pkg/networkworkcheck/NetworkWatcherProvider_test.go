@@ -11,7 +11,7 @@ import (
 )
 
 var (
-	provider interfaces.NetworkWatcherProvider
+	provider interfaces.NetworkWatcherProviderCheck
 )
 
 const (

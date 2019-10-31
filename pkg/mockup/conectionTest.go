@@ -10,11 +10,11 @@ type connectionTestMockup struct {
 	source         *models.VMDetails
 	target         *models.VMDetails
 	port           uint
-	networkWatcher interfaces.NetworkWatcherProviderCheck
+	networkWatcher interfaces.NetworkWatcherCheckProvider
 }
 
 //NewConnectionTestMockup create an instace of connectionTestMockup
-func NewConnectionTestMockup(sourceVMId string, destinyVMId string, destinyPort uint, netWatcherProvider interfaces.NetworkWatcherProviderCheck) (*connectionTestMockup, error) {
+func NewConnectionTestMockup(sourceVMId string, destinyVMId string, destinyPort uint, netWatcherProvider interfaces.NetworkWatcherCheckProvider) (*connectionTestMockup, error) {
 	connectionTest := &connectionTestMockup{}
 	var err error
 

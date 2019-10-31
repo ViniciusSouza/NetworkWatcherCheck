@@ -13,11 +13,11 @@ type connectionTest struct {
 	source             *models.VMDetails
 	target             *models.VMDetails
 	port               uint
-	netWatcherProvider interfaces.NetworkWatcherProviderCheck
+	netWatcherProvider interfaces.NetworkWatcherCheckProvider
 }
 
 //NewConnectionTest create an instace of ConnectionTest
-func NewConnectionTest(sourceVMId string, destinyVMId string, destinyPort uint, netWatcherProvider interfaces.NetworkWatcherProviderCheck) (*connectionTest, error) {
+func NewConnectionTest(sourceVMId string, destinyVMId string, destinyPort uint, netWatcherProvider interfaces.NetworkWatcherCheckProvider) (*connectionTest, error) {
 	connectionTest := &connectionTest{}
 	var err error
 
